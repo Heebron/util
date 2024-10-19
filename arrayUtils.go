@@ -2,7 +2,7 @@ package util
 
 import "runtime"
 
-// Count returns a count of the number of elements tha generate a true value from the given function. This implementation
+// Count returns a count of the number of elements that generate a true value from the given function. This implementation
 // uses one go routine per CPU.
 func Count[T any](d []T, f func(ele T) bool) int64 {
 	cpuCount := runtime.NumCPU()
