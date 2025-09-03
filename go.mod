@@ -1,6 +1,6 @@
 module gitlab.thepratts.info/util
 
-go 1.24.3
+go 1.25
 
 require (
 	github.com/leekchan/accounting v1.0.0
