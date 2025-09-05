@@ -1,4 +1,4 @@
-module gitlab.thepratts.info/util
+module github.com/Heebron/util
 
 go 1.25
 
