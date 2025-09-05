@@ -33,12 +33,11 @@ func (ts *TimeSeries[T]) Get(t time.Time) *T {
 // If the time entry does not exist, it is created using the init function.
 // If the time entry exists, it is modified using the update function.
 func (ts *TimeSeries[T]) Update(t time.Time, init func() *T, update func(*T)) {
-
-	//	fmt.Println(t.Truncate(ts.PrecisionMask))
-	v, ok := ts.data[t.Truncate(ts.PrecisionMask)]
+	key := t.In(time.UTC).Truncate(ts.PrecisionMask)
+	v, ok := ts.data[key]
 	if !ok {
 		v = init()
-		ts.data[t.Truncate(ts.PrecisionMask)] = v
+		ts.data[key] = v
 	} else {
 		update(v)
 	}
