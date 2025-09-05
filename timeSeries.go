@@ -2,9 +2,8 @@
 package util
 
 import (
+	"slices"
 	"time"
-
-	"golang.org/x/exp/slices"
 )
 
 // TimeSeries represents a collection of time-stamped entries, indexed with specified time precision.
@@ -26,7 +25,7 @@ func NewTimeSeriesMap[T any](precision time.Duration) *TimeSeries[T] {
 
 // Get retrieves the value associated with a specific time, truncated to the series' precision. Returns nil if not found.
 func (ts *TimeSeries[T]) Get(t time.Time) *T {
-	return ts.data[t.Truncate(ts.PrecisionMask)]
+	return ts.data[t.In(time.UTC).Truncate(ts.PrecisionMask)]
 }
 
 // Update adds or updates an entry in the time series for the specified time.
@@ -61,7 +60,7 @@ func (ts *TimeSeries[T]) Keys() []time.Time {
 	}
 
 	slices.SortFunc(keys, func(i, j time.Time) int {
-		return int(i.Unix() - j.Unix())
+		return int(i.UnixMicro() - j.UnixMicro())
 	})
 
 	return keys

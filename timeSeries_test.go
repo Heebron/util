@@ -49,7 +49,7 @@ func TestNewTimeSeriesMap(t *testing.T) {
 func TestGet(t *testing.T) {
 	// Setup
 	ts := NewTimeSeriesMap[int](time.Hour)
-	now := time.Now()
+	now := time.Now().In(time.UTC)
 	truncatedNow := now.Truncate(time.Hour)
 
 	// Add a value

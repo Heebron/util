@@ -1,6 +1,8 @@
 package util
 
-import "runtime"
+import (
+	"runtime"
+)
 
 // Count counts the elements in the slice `d` satisfying the predicate function `f` and returns the count as int64.
 func Count[T any](d []T, f func(ele T) bool) int64 {
