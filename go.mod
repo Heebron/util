@@ -1,4 +1,4 @@
-module github.com/Heebron/util.git
+module github.com/Heebron/util
 
 go 1.25
 
