@@ -4,7 +4,7 @@ go 1.25
 
 require (
 	github.com/leekchan/accounting v1.0.0
-	golang.org/x/exp v0.0.0-20250819193227-8b4c13bb791b
+	golang.org/x/exp v0.0.0-20251125195548-87e1e737ad39
 )
 
 require (
